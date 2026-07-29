@@ -336,26 +336,27 @@
         <div class="row2">
           <div class="field">
             <label>שם פרטי</label>
-            <input type="text" required placeholder="שם פרטי">
+            <input type="text" name="שם פרטי" required placeholder="שם פרטי">
           </div>
           <div class="field">
             <label>שם משפחה</label>
-            <input type="text" required placeholder="שם משפחה">
+            <input type="text" name="שם משפחה" required placeholder="שם משפחה">
           </div>
         </div>
         <div class="field">
           <label>עיר מגורים</label>
-          <input type="text" required placeholder="עיר">
+          <input type="text" name="עיר" required placeholder="עיר">
         </div>
         <div class="field">
           <label>מספר טלפון</label>
-          <input type="tel" required placeholder="050-0000000" style="direction:ltr; text-align:right;">
+          <input type="tel" name="טלפון" required placeholder="050-0000000" style="direction:ltr; text-align:right;">
         </div>
         <div class="field">
           <label>דוא&quot;ל</label>
-          <input type="email" required placeholder="name@example.com" style="direction:ltr; text-align:right;">
+          <input type="email" name="אימייל" required placeholder="name@example.com" style="direction:ltr; text-align:right;">
         </div>
-        <button type="submit" class="submit-btn">שליחת פרטים</button>
+        <input type="hidden" name="_subject" value="ליד חדש - הכשרת מתווכים BSD">
+        <button type="submit" class="submit-btn" id="submit-btn">שליחת פרטים</button>
         <div class="form-note">הפרטים ישמשו ליצירת קשר בנוגע להכשרת המתווכים בלבד</div>
       </form>
       <div class="success-msg" id="success-msg">
@@ -528,8 +529,26 @@
 <script>
   function submitForm(e){
     e.preventDefault();
-    document.getElementById('lead-form').style.display = 'none';
-    document.getElementById('success-msg').classList.add('show');
+    const form = document.getElementById('lead-form');
+    const btn = document.getElementById('submit-btn');
+    const formData = new FormData(form);
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+    fetch('https://formsubmit.co/ajax/baruch.ezon@gmail.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    })
+    .then(res => res.json())
+    .then(() => {
+      form.style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'שליחת פרטים';
+      alert('אירעה שגיאה בשליחה, נסו שוב בבקשה.');
+    });
   }
 </script>
 
