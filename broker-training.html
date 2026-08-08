@@ -552,5 +552,27 @@
   }
 </script>
 
+
+<script>
+(function() {
+  try {
+    var SUPABASE_URL = "https://zcdlegcvfirwzitfxjcs.supabase.co";
+    var SUPABASE_KEY = "sb_publishable_baq54BVGwvtjB8c7ZiegCQ_tAXevwfN";
+    fetch(SUPABASE_URL + "/rest/v1/page_views", {
+      method: "POST",
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({
+        page: "broker-training",
+        referrer: document.referrer || null
+      })
+    }).catch(function(){});
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
