@@ -1,3 +1,4 @@
+const themeLink=document.createElement('link');themeLink.rel='stylesheet';themeLink.href='theme.css?v=20260908-1';document.head.appendChild(themeLink);
 const PRIMARY_PHONE_DISPLAY='08 6335333';const PRIMARY_PHONE_HREF='086335333';
 function normalizePhones(){document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:'+PRIMARY_PHONE_HREF;a.textContent=PRIMARY_PHONE_DISPLAY});const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(/0549091504|0507426263|08\s*6335333/g,PRIMARY_PHONE_DISPLAY)})}
 normalizePhones();
