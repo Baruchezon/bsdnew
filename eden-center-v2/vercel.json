@@ -1,0 +1,29 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/אודות", "destination": "/about.html" },
+    { "source": "/שירותים", "destination": "/services.html" },
+    { "source": "/ביקורות", "destination": "/reviews.html" },
+    { "source": "/הידרותרפיה-ילדים", "destination": "/hydrotherapy-children.html" },
+    { "source": "/הידרותרפיה-מבוגרים", "destination": "/hydrotherapy-adults.html" },
+    { "source": "/שחייה-טיפולית", "destination": "/therapeutic-swimming.html" },
+    { "source": "/שחיית-תינוקות", "destination": "/eden-baby.html" },
+    { "source": "/הבריכות", "destination": "/pools.html" },
+    { "source": "/הצוות", "destination": "/team.html" },
+    { "source": "/טיפול-במים-על-הרצף", "destination": "/autism.html" },
+    { "source": "/מרכז-ידע", "destination": "/knowledge.html" },
+    { "source": "/צור-קשר", "destination": "/contact.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ]
+}
