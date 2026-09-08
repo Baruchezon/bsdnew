@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# סביבת בדיקה בלבד. בהשקה יש להחליף ל-Allow: / ולהוסיף Sitemap.
