@@ -6,3 +6,7 @@
 /* cooking-baking-nav-fit */
 @media(min-width:981px){.navrow{gap:.75rem}.menu{gap:.1rem}.menu a{padding:.62rem .52rem;font-size:.85rem}}
 .cookingPhoto>img{object-position:center 50%!important}
+
+/* clear confirmation after a successful contact-form submission */
+.formMsg.ok{display:block!important;grid-column:1/-1;margin-top:.55rem;padding:1.15rem 1rem!important;text-align:center;background:linear-gradient(145deg,#effff8,#e7fbf3)!important;color:#285e4e!important;border:1px solid #bfe8d5;border-radius:18px;font-size:1.02rem;font-weight:750;line-height:1.55;box-shadow:0 10px 24px rgba(20,110,82,.10)}
+.formMsg.ok::before{content:"תודה!";display:block;margin-bottom:.18rem;color:#087c91;font-size:1.45rem;font-weight:900;line-height:1.2}
