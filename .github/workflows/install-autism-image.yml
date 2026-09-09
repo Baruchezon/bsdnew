@@ -1,0 +1,65 @@
+name: Install exact autism page image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.tmp-autism/**'
+
+permissions:
+  contents: write
+
+jobs:
+  install-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check all chunks
+        id: ready
+        shell: bash
+        run: |
+          set -e
+          ready=true
+          for f in .tmp-autism/01.b64 .tmp-autism/02.b64 .tmp-autism/03.b64 .tmp-autism/04.b64 .tmp-autism/05.b64 .tmp-autism/06.b64 .tmp-autism/07.b64 .tmp-autism/08.b64 .tmp-autism/09.b64 .tmp-autism/10.b64 .tmp-autism/11.b64; do
+            [ -f "$f" ] || ready=false
+          done
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+
+      - name: Build exact image asset
+        if: steps.ready.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p eden-center-v2/assets
+          cat .tmp-autism/*.b64 | base64 -d > eden-center-v2/assets/autism-user-20260909.webp
+          file eden-center-v2/assets/autism-user-20260909.webp
+
+      - name: Change only image source
+        if: steps.ready.outputs.ready == 'true'
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('eden-center-v2/autism.html')
+          s = p.read_text(encoding='utf-8')
+          old = 'https://img5.businesses10.com/010/784/987010840107844.jpg'
+          new = 'assets/autism-user-20260909.webp?v=20260909b'
+          if old not in s:
+              raise SystemExit('Expected current autism image source not found')
+          p.write_text(s.replace(old, new, 1), encoding='utf-8')
+
+      - name: Commit final site asset only
+        if: steps.ready.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .tmp-autism
+          rm -f .github/workflows/install-autism-image.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add eden-center-v2/assets/autism-user-20260909.webp eden-center-v2/autism.html .tmp-autism .github/workflows/install-autism-image.yml
+          git commit -m "Use supplied image on autism page"
+          git push origin main
