@@ -24,7 +24,7 @@ jobs:
         run: |
           set -e
           ready=true
-          for f in .tmp-autism/01.b64 .tmp-autism/02.b64 .tmp-autism/03.b64; do
+          for f in .tmp-autism/01.b64 .tmp-autism/02.b64 .tmp-autism/03.b64 .tmp-autism/04.b64 .tmp-autism/05.b64 .tmp-autism/06.b64 .tmp-autism/07.b64 .tmp-autism/08.b64 .tmp-autism/09.b64 .tmp-autism/10.b64 .tmp-autism/11.b64 .tmp-autism/12.b64; do
             [ -f "$f" ] || ready=false
           done
           echo "ready=$ready" >> "$GITHUB_OUTPUT"
@@ -46,7 +46,7 @@ jobs:
           p = Path('eden-center-v2/autism.html')
           s = p.read_text(encoding='utf-8')
           old = 'https://img5.businesses10.com/010/784/987010840107844.jpg'
-          new = 'assets/autism-user-20260909.webp?v=20260909c'
+          new = 'assets/autism-user-20260909.webp?v=20260909d'
           if old not in s:
               raise SystemExit('Expected current autism image source not found')
           p.write_text(s.replace(old, new, 1), encoding='utf-8')
