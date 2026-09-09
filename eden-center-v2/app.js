@@ -1,5 +1,5 @@
 const themeLink=document.createElement('link');themeLink.rel='stylesheet';themeLink.href='theme.css?v=20260908-5';document.head.appendChild(themeLink);
-const fixesLink=document.createElement('link');fixesLink.rel='stylesheet';fixesLink.href='site-fixes.css?v=20260908-3';document.head.appendChild(fixesLink);
+const fixesLink=document.createElement('link');fixesLink.rel='stylesheet';fixesLink.href='site-fixes.css?v=20260909-1';document.head.appendChild(fixesLink);
 const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink.href='https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap';document.head.appendChild(fontLink);
 const PRIMARY_PHONE_DISPLAY='08-6335333';const PRIMARY_PHONE_HREF='086335333';const LOGO='https://media.easy.co.il/images/UserThumbs/10143668_1752242943315_0.png';
 function normalizePhones(){const re=/(?:054[\s-]*909[\s-]*1504|050[\s-]*742[\s-]*6263|08[\s-]*633[\s-]*5333)/g;document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:'+PRIMARY_PHONE_HREF;a.textContent=PRIMARY_PHONE_DISPLAY;a.setAttribute('dir','ltr');a.classList.add('phone-ltr')});const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{const p=n.parentElement;if(!p||p.closest('a[href^="tel:"]')||['SCRIPT','STYLE'].includes(p.tagName))return;const text=n.nodeValue;re.lastIndex=0;if(!re.test(text))return;re.lastIndex=0;const frag=document.createDocumentFragment();let last=0;for(const m of text.matchAll(re)){frag.append(document.createTextNode(text.slice(last,m.index)));const bdi=document.createElement('bdi');bdi.className='phone-ltr';bdi.dir='ltr';bdi.textContent=PRIMARY_PHONE_DISPLAY;frag.append(bdi);last=m.index+m[0].length}frag.append(document.createTextNode(text.slice(last)));n.replaceWith(frag)})}
@@ -21,3 +21,16 @@ function addWhyEden(){const file=location.pathname.split('/').pop()||'index.html
 normalizePhones();normalizeBrand();improveHeroCard();addWelcomeThought();addWhyEden();
 const menuBtn=document.querySelector('.mobileBtn');const menu=document.querySelector('.menu');if(menuBtn&&menu){menuBtn.addEventListener('click',()=>{menu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',menu.classList.contains('open'))});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}))}
 const form=document.querySelector('[data-lead-form]');if(form){form.addEventListener('submit',async e=>{e.preventDefault();const msg=form.querySelector('.formMsg');const btn=form.querySelector('button[type=submit]');const data=Object.fromEntries(new FormData(form).entries());data.source='website-v2';data.sourcePage=location.href;data.fullName=data.childName||data.fullName||data.parentName;msg.className='formMsg';msg.textContent='';btn.disabled=true;btn.textContent='שולחים את הפנייה...';try{const r=await fetch('https://eden-center-crm.onrender.com/api/public/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error('http');msg.className='formMsg ok';msg.textContent='הפנייה התקבלה. צוות מרכז עדן יחזור אליכם בהקדם.';form.reset()}catch(err){msg.className='formMsg bad';msg.innerHTML='לא הצלחנו לשלוח כרגע. אפשר להתקשר ישירות למרכז במספר <bdi class="phone-ltr" dir="ltr">'+PRIMARY_PHONE_DISPLAY+'</bdi>.'}finally{btn.disabled=false;btn.textContent='שליחת פנייה למרכז עדן'}})}
+// cooking-baking-nav
+(function addCookingBakingNav(){
+  document.querySelectorAll('.menu').forEach(menu=>{
+    if(menu.querySelector('a[href="cooking-baking.html"]')) return;
+    const a=document.createElement('a');
+    a.href='cooking-baking.html';
+    a.textContent='בישול ואפייה';
+    const services=menu.querySelector('a[href="services.html"]');
+    if(services) services.insertAdjacentElement('afterend',a); else menu.appendChild(a);
+    const here=location.pathname.split('/').pop()||'index.html';
+    if(here==='cooking-baking.html') a.classList.add('active');
+  });
+})();
