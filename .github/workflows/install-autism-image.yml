@@ -1,0 +1,61 @@
+name: Install autism image
+
+on:
+  push:
+    branches: [image-test]
+    paths:
+      - '.tmp-images/autism/**'
+
+permissions:
+  contents: write
+
+jobs:
+  install-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: image-test
+
+      - name: Check chunks
+        id: ready
+        shell: bash
+        run: |
+          set -e
+          ready=true
+          for f in .tmp-images/autism/01.b64 .tmp-images/autism/02.b64 .tmp-images/autism/03.b64 .tmp-images/autism/04.b64 .tmp-images/autism/05.b64 .tmp-images/autism/06.b64 .tmp-images/autism/07.b64 .tmp-images/autism/08.b64 .tmp-images/autism/09.b64; do
+            [ -f "$f" ] || ready=false
+          done
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+
+      - name: Decode image and update page
+        if: steps.ready.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p eden-center-v2/assets
+          cat .tmp-images/autism/*.b64 | base64 -d > eden-center-v2/assets/autism-user-20260909.webp
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('eden-center-v2/autism.html')
+          text = p.read_text(encoding='utf-8')
+          old = 'https://img5.businesses10.com/010/784/987010840107844.jpg'
+          new = 'assets/autism-user-20260909.webp?v=20260909'
+          if old not in text:
+              raise SystemExit('Expected image source not found')
+          p.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+          rm -rf .tmp-images
+
+      - name: Commit result
+        if: steps.ready.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add eden-center-v2/assets/autism-user-20260909.webp eden-center-v2/autism.html .tmp-images
+          git commit -m "Use supplied image on autism page"
+          git push origin HEAD:image-test
