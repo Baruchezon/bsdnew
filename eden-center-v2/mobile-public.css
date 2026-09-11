@@ -1,0 +1,519 @@
+/* Eden Center public website: final mobile layout layer.
+   Loaded last so desktop theme rules cannot override mobile behavior. */
+
+@media (max-width: 850px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0 0 calc(76px + env(safe-area-inset-bottom));
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  body > * {
+    max-width: 100%;
+  }
+
+  .container {
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+  }
+
+  .topbar {
+    display: none !important;
+  }
+
+  .nav {
+    display: block !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+    background: rgba(255,255,255,.98) !important;
+    backdrop-filter: blur(14px);
+  }
+
+  .navrow {
+    width: 100% !important;
+    min-height: 68px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+  }
+
+  .brand {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .brand img {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+  }
+
+  .brand strong {
+    display: block !important;
+    font-size: 16px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+
+  .mobileBtn {
+    display: inline-grid !important;
+    place-items: center !important;
+    flex: 0 0 46px !important;
+    width: 46px !important;
+    height: 46px !important;
+    padding: 0 !important;
+    font-size: 25px !important;
+    line-height: 1 !important;
+    border-radius: 14px !important;
+    color: #07324a !important;
+    background: #e8fafa !important;
+  }
+
+  .navrow > .btn {
+    display: none !important;
+  }
+
+  .menu {
+    display: none !important;
+    position: fixed !important;
+    top: 70px !important;
+    right: 10px !important;
+    left: 10px !important;
+    z-index: 1100 !important;
+    max-height: calc(100dvh - 84px) !important;
+    overflow-y: auto !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    border: 1px solid #dceff1 !important;
+    border-radius: 20px !important;
+    background: rgba(255,255,255,.99) !important;
+    box-shadow: 0 24px 60px rgba(4,55,78,.24) !important;
+    overscroll-behavior: contain;
+  }
+
+  .menu.open {
+    display: grid !important;
+  }
+
+  .menu a {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 48px !important;
+    padding: 10px 12px !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero,
+  .pageHero,
+  .section,
+  .footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .hero {
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
+    background-position: 58% center !important;
+  }
+
+  .heroGrid {
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+    padding: 30px 0 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+  }
+
+  .heroCopy,
+  .heroCard {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .heroCopy {
+    order: 1;
+  }
+
+  .heroCard {
+    order: 2;
+    justify-self: stretch !important;
+    padding: 16px !important;
+    border-radius: 22px !important;
+  }
+
+  .hero h1 {
+    margin: 10px 0 12px !important;
+    font-size: clamp(36px, 11vw, 52px) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -.025em !important;
+  }
+
+  .hero p {
+    max-width: none !important;
+    margin-bottom: 16px !important;
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+
+  .eyebrow {
+    max-width: 100%;
+    white-space: normal !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
+  .actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .actions .btn,
+  .heroCopy .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+  }
+
+  .welcomeThought {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 14px 0 0 !important;
+    padding: 9px 11px !important;
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    border-radius: 14px !important;
+    background: rgba(3,48,66,.38) !important;
+  }
+
+  .quick {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .quick a {
+    width: 100% !important;
+    min-height: 52px !important;
+    font-size: 15px !important;
+  }
+
+  .section,
+  .section.tight {
+    padding: 34px 0 !important;
+  }
+
+  .grid2,
+  .cards,
+  .featureGrid,
+  .reviews,
+  .knowledge,
+  .teamGrid,
+  .contactWrap,
+  .footerGrid,
+  .form,
+  .crm,
+  .stats {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .grid2 {
+    gap: 20px !important;
+  }
+
+  .grid2 > *,
+  .cards > *,
+  .featureGrid > *,
+  .reviews > *,
+  .knowledge > *,
+  .teamGrid > *,
+  .contactWrap > *,
+  .footerGrid > * {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .title,
+  .pageHero .title {
+    max-width: 100% !important;
+    font-size: clamp(28px, 8.5vw, 39px) !important;
+    line-height: 1.15 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .lead,
+  .content,
+  .content p,
+  .content li {
+    max-width: 100% !important;
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+  }
+
+  .photo,
+  .personPhoto,
+  .cardImg {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .photo {
+    min-height: 260px !important;
+    border-radius: 20px !important;
+    background-size: cover !important;
+  }
+
+  .photo > img,
+  .personPhoto > img,
+  .cardImg img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .cards {
+    gap: 14px !important;
+    margin-top: 18px !important;
+  }
+
+  .card,
+  .feature,
+  .review,
+  .article,
+  .person {
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 18px !important;
+  }
+
+  .card {
+    padding: 12px !important;
+  }
+
+  .cardImg {
+    height: 210px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .featureGrid,
+  .reviews,
+  .knowledge,
+  .teamGrid {
+    gap: 12px !important;
+  }
+
+  .pillrow {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .pill {
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+
+  .pageHero {
+    padding: 34px 0 28px !important;
+  }
+
+  .breadcrumbs {
+    white-space: normal !important;
+    line-height: 1.5 !important;
+  }
+
+  .contactWrap {
+    gap: 12px !important;
+    padding: 10px !important;
+    border-radius: 20px !important;
+  }
+
+  .contactInfo {
+    padding: 16px !important;
+    border-radius: 17px !important;
+  }
+
+  .form {
+    gap: 12px !important;
+    padding: 8px !important;
+  }
+
+  .field,
+  .field.full,
+  .consent,
+  .formMsg {
+    grid-column: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 48px !important;
+    padding: 11px 12px !important;
+    font-size: 16px !important;
+  }
+
+  .field textarea {
+    min-height: 120px !important;
+  }
+
+  .form > .btn {
+    width: 100% !important;
+    min-height: 50px !important;
+  }
+
+  .footer {
+    margin-top: 24px !important;
+    padding: 30px 0 calc(96px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .footerGrid {
+    gap: 24px !important;
+  }
+
+  .copy {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  .stickyContact {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    position: fixed !important;
+    right: 10px !important;
+    left: 10px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+    z-index: 1400 !important;
+    gap: 8px !important;
+    padding: 0 !important;
+  }
+
+  .stickyContact a {
+    min-width: 0 !important;
+    min-height: 48px !important;
+    padding: 11px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 15px !important;
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+  }
+
+  img,
+  video,
+  iframe,
+  svg {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .heroGrid {
+    width: calc(100% - 18px) !important;
+  }
+
+  .navrow {
+    min-height: 64px !important;
+  }
+
+  .brand img {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+  }
+
+  .brand strong {
+    font-size: 15px !important;
+  }
+
+  .mobileBtn {
+    width: 44px !important;
+    height: 44px !important;
+    flex-basis: 44px !important;
+  }
+
+  .menu {
+    top: 66px !important;
+    right: 7px !important;
+    left: 7px !important;
+  }
+
+  .heroGrid {
+    padding: 24px 0 28px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 12vw, 44px) !important;
+  }
+
+  .hero p {
+    font-size: 16px !important;
+  }
+
+  .section,
+  .section.tight {
+    padding: 28px 0 !important;
+  }
+
+  .title,
+  .pageHero .title {
+    font-size: clamp(27px, 9vw, 35px) !important;
+  }
+
+  .photo {
+    min-height: 225px !important;
+  }
+
+  .cardImg {
+    height: 190px !important;
+  }
+
+  .stickyContact {
+    right: 7px !important;
+    left: 7px !important;
+  }
+
+  .stickyContact a {
+    font-size: 14px !important;
+  }
+}
