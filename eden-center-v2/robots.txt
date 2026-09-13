@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# סביבת בדיקה בלבד. בהשקה יש להחליף ל-Allow: / ולהוסיף Sitemap.
+Sitemap: https://eden-center.co.il/sitemap.xml
