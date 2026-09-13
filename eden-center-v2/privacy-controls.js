@@ -35,7 +35,7 @@
     const panel = document.createElement('aside');
     panel.className = 'privacy-banner';
     panel.setAttribute('aria-label', 'העדפות פרטיות ועוגיות');
-    panel.innerHTML = '<p><strong>הפרטיות שלכם חשובה לנו</strong> ברשותכם נפעיל מדידה אנונימית של ביקורים, דפים ופעולות באתר כדי לשפר אותו. המדידה אינה כוללת שמות, טלפונים, כתובות IP או תוכן טפסים, ואין באתר כלי פרסום.</p><div class="privacy-actions"><button type="button" data-choice="necessary">רק הכרחי</button><button type="button" data-choice="analytics">אישור מדידה אנונימית</button><a href="cookies.html">פרטים על עוגיות ואחסון</a></div><p class="privacy-storage-note" hidden></p>';
+    panel.innerHTML = '<p><strong>עוגיות באתר</strong> באישורכם, נשתמש בעוגיות כדי להבין באילו דפים מבקרים ולשפר את האתר. אפשר גם להמשיך עם עוגיות נחוצות בלבד.</p><div class="privacy-actions"><button type="button" data-choice="necessary">רק עוגיות נחוצות</button><button type="button" data-choice="analytics">אישור עוגיות</button><a href="cookies.html">מידע נוסף</a></div><p class="privacy-storage-note" hidden></p>';
     panel.hidden = !!choice;
     document.body.append(panel);
     let opener = null;
