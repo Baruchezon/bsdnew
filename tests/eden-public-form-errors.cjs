@@ -1,0 +1,11 @@
+const fs=require('fs'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
+const html=fs.readFileSync('eden-center-v2/contact.html','utf8'),app=fs.readFileSync('eden-center-v2/app.js','utf8');
+const tick=()=>new Promise(r=>setTimeout(r,5));
+async function test(mode){const dom=new JSDOM(html,{url:'https://eden-center.co.il/contact.html',runScripts:'outside-only'}),w=dom.window;let calls=0;const f=w.document.querySelector('form');assert(f.querySelector('fieldset').disabled);assert.equal(f.method,'post');
+if(mode==='timeout'){const real=w.setTimeout.bind(w);w.setTimeout=(fn,ms)=>real(fn,ms===30000?0:ms)}
+w.fetch=(url,o)=>{calls++;if(mode==='timeout')return new Promise((_,reject)=>o.signal.addEventListener('abort',()=>reject(Error('timeout'))));if(url.includes('formsubmit'))return Promise.resolve({ok:false});return Promise.resolve({ok:true,json:async()=>{if(mode==='invalid-json')throw Error('json');return mode==='false-success'?{ok:false}:{ok:true,duplicate:mode==='duplicate'}}})};w.eval(app);
+assert(!f.querySelector('fieldset').disabled);
+f.querySelector('[name=parentName]').value='test';f.querySelector('[name=phone]').value=mode==='bad-phone'?'12':'0500000000';f.querySelector('[name=contactConsent]').checked=true;
+f.dispatchEvent(new w.Event('submit',{cancelable:true}));if(mode==='double')f.dispatchEvent(new w.Event('submit',{cancelable:true}));await tick();
+if(mode==='bad-phone'){assert.equal(calls,0);assert(f.querySelector('[name=phone]').validationMessage)}else if(['timeout','invalid-json','false-success'].includes(mode)){assert(w.document.querySelector('.formMsg.bad'));assert.equal(f.querySelector('[name=parentName]').value,'test');assert(!f.querySelector('button[type=submit]').disabled)}else{assert(w.document.querySelector('.formMsg.ok'));assert.equal(calls,mode==='duplicate'?1:2)}dom.window.close();}
+(async()=>{for(const mode of ['bad-phone','timeout','invalid-json','false-success','duplicate','double'])await test(mode);console.log('PASS: no-JS disabled fields, POST fallback, bad phone, timeout, invalid JSON, false success, duplicate suppression, double click, retained input and restored button. Mock requests only.');})().catch(e=>{console.error(e);process.exit(1)});

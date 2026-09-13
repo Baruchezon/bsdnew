@@ -26,13 +26,12 @@
       document.body.classList.toggle('privacy-open', !panel.hidden);
       document.body.style.setProperty('--privacy-space', panel.hidden ? '0px' : `${panel.getBoundingClientRect().height + 20}px`);
     }
-    function close() { panel.hidden = true; reserveSpace(); if (opener) opener.focus(); }
+    function close() { panel.hidden = true; reserveSpace(); if (opener) opener.focus({ preventScroll: true }); else document.getElementById('main-content')?.focus({ preventScroll: true }); }
     panel.querySelectorAll('[data-choice]').forEach(button => button.addEventListener('click', () => {
       choice = { version, preferences: button.dataset.choice === 'preferences', savedAt: Date.now() };
       try { localStorage.setItem(key, JSON.stringify(choice)); } catch (_) { /* Choice remains valid for this page only. */ }
       if (!choice.preferences) clearOptional();
       window.dispatchEvent(new CustomEvent('edenprivacychange'));
-      if (!opener) opener = document.querySelector('[data-privacy-settings]');
       close();
     }));
     document.querySelectorAll('[data-privacy-settings]').forEach(button => button.addEventListener('click', () => {

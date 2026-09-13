@@ -1,0 +1,2 @@
+const {JSDOM}=require('jsdom'),fs=require('fs');
+(async()=>{for(const p of fs.readdirSync('eden-center-v2').filter(x=>x.endsWith('.html')&&!x.startsWith('live-'))){const d=new JSDOM(fs.readFileSync('eden-center-v2/'+p,'utf8'),{runScripts:'outside-only',url:'https://eden-center.co.il/'+p});d.window.eval(fs.readFileSync(require.resolve('axe-core/axe.min.js'),'utf8'));const r=await d.window.axe.run({rules:{'color-contrast':{enabled:false}}});console.log(p,JSON.stringify(r.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)}))));d.window.close()}})();
