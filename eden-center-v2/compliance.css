@@ -1,0 +1,30 @@
+/* Small, native controls and accessibility improvements shared by every page. */
+html { scroll-padding-top: 110px; }
+body { padding-bottom: var(--privacy-space, 0px); }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid #07324a !important; outline-offset: 4px !important; box-shadow: 0 0 0 6px #fff !important; }
+.skip-link { position: fixed; top: 10px; right: 10px; z-index: 1000; padding: 12px 18px; background: #fff; color: #07324a; border: 2px solid #07324a; border-radius: 8px; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+#main-content:focus { outline: none; }
+.legal-links { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; padding-top: 18px; font-size: .9rem; }
+.legal-links a, .legal-links button { display: inline-block; min-height: 32px; color: #e5f7fb; padding: 5px 0; font: inherit; background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-banner { position: fixed; z-index: 200; bottom: 12px; left: 12px; width: min(540px, calc(100% - 24px)); max-height: 65vh; overflow: auto; background: #fff; color: #173b48; border: 1px solid #9bbcc3; border-radius: 14px; padding: 14px 18px; box-shadow: 0 6px 25px #07324a25; font-size: .9rem; line-height: 1.6; }
+.privacy-banner p { margin: 0 0 10px; }
+.privacy-banner strong { display: block; }
+.privacy-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.privacy-actions button { font: inherit; font-weight: 700; cursor: pointer; padding: 9px 12px; min-height: 44px; border: 1px solid #315e68; border-radius: 8px; color: #173b48; background: #f1f8f8; }
+.privacy-actions a, .privacy-notice a, .consent a, .content a { text-decoration: underline; text-underline-offset: 3px; }
+.privacy-notice { grid-column: 1 / -1; font-size: .9rem; line-height: 1.7; color: #364f5b; margin: 0; }
+.consent { line-height: 1.7; color: #364f5b; }
+.consent input { width: 20px; height: 20px; vertical-align: middle; accent-color: #075b73; }
+.field input, .field select, .field textarea { border-color: #718e97; }
+.btn:not(.gold):not(.light) { background: #086078; color: #fff; }
+.stickyContact a { background: #086078; }
+.privacy-open .stickyContact { display: none; }
+.content { overflow-wrap: anywhere; }
+.content table { width: 100%; border-collapse: collapse; }
+.content th, .content td { text-align: right; border: 1px solid #b9cdd2; padding: 10px; }
+@media (max-width: 640px) { .privacy-banner { bottom: 8px; padding: 12px; } .legal-links { gap: 8px 14px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (forced-colors: active) { .privacy-banner, .privacy-actions button { border: 1px solid CanvasText; } }
+@media print { .privacy-banner, .stickyContact, .skip-link, [data-privacy-settings] { display: none !important; } body { padding-bottom: 0; } }
