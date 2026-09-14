@@ -10,3 +10,17 @@
 /* clear confirmation after a successful contact-form submission */
 .formMsg.ok{display:block!important;grid-column:1/-1;margin-top:.55rem;padding:1.15rem 1rem!important;text-align:center;background:linear-gradient(145deg,#effff8,#e7fbf3)!important;color:#285e4e!important;border:1px solid #bfe8d5;border-radius:18px;font-size:1.02rem;font-weight:750;line-height:1.55;box-shadow:0 10px 24px rgba(20,110,82,.10)}
 .formMsg.ok::before{content:"תודה!";display:block;margin-bottom:.18rem;color:#087c91;font-size:1.45rem;font-weight:900;line-height:1.2}
+
+/* Header social buttons: isolated so the existing menu and every current action stay unchanged. */
+.edenSocialLinks{display:flex;align-items:center;justify-content:center;gap:9px;flex:0 0 auto;margin-inline:5px 7px;direction:ltr}
+.edenSocialButton{position:relative;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:15px;border:1px solid rgba(255,255,255,.94);color:#fff;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.09),0 5px 0 var(--social-edge),0 9px 16px rgba(7,50,74,.22);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;isolation:isolate}
+.edenSocialButton::after{content:"";position:absolute;inset:3px 5px auto;height:35%;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0));pointer-events:none;z-index:-1}
+.edenSocialButton svg{width:26px;height:26px;display:block;fill:currentColor;stroke:currentColor;stroke-width:1.8}
+.edenSocialButton .socialDot{fill:currentColor;stroke:none}
+.edenInstagram{--social-edge:#a32978;background:radial-gradient(circle at 30% 105%,#ffd86f 0 22%,#f04b45 38%,#c52d91 63%,#6057d9 100%)}
+.edenFacebook{--social-edge:#174d9b;background:linear-gradient(145deg,#64a2ff,#1877f2 55%,#0d5ac4)}
+.edenSocialButton:hover{transform:translateY(-2px);filter:saturate(1.12) brightness(1.04);box-shadow:inset 0 2px 0 rgba(255,255,255,.42),0 7px 0 var(--social-edge),0 13px 20px rgba(7,50,74,.25)}
+.edenSocialButton:active{transform:translateY(4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 var(--social-edge),0 5px 9px rgba(7,50,74,.18)}
+.edenSocialButton:focus-visible{outline:3px solid #f4c85f;outline-offset:3px}
+@media(max-width:1180px){.edenSocialLinks{gap:7px;margin-inline:3px 6px}.edenSocialButton{width:41px;height:41px;border-radius:13px}.edenSocialButton svg{width:23px;height:23px}}
+@media(max-width:640px){.edenSocialLinks{gap:6px;margin-inline:2px 5px}.edenSocialButton{width:38px;height:38px;border-radius:12px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 4px 0 var(--social-edge),0 7px 12px rgba(7,50,74,.2)}.edenSocialButton svg{width:21px;height:21px}}
