@@ -81,3 +81,20 @@ form.querySelector('.form-fallback')?.setAttribute('hidden','');
   });
 })();
 
+/* Social shortcuts in the white header area. Kept separate from the main menu. */
+(function addSocialHeaderButtons(){
+  const navrow=document.querySelector('.navrow');
+  const brand=navrow&&navrow.querySelector('.brand');
+  if(!navrow||!brand||navrow.querySelector('.edenSocialLinks'))return;
+  const links=document.createElement('div');
+  links.className='edenSocialLinks';
+  links.setAttribute('aria-label','מרכז עדן ברשתות החברתיות');
+  links.innerHTML=`
+    <a class="edenSocialButton edenInstagram" href="https://www.instagram.com/eden_life_skils/" target="_blank" rel="noopener noreferrer" aria-label="מרכז עדן באינסטגרם" title="אינסטגרם">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.25"></circle><circle class="socialDot" cx="17.4" cy="6.7" r="1.15"></circle></svg>
+    </a>
+    <a class="edenSocialButton edenFacebook" href="https://www.facebook.com/profile.php?id=100063968114891" target="_blank" rel="noopener noreferrer" aria-label="מרכז עדן בפייסבוק" title="פייסבוק">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.65 21v-8h2.75l.42-3.12h-3.17v-2c0-.91.26-1.52 1.59-1.52h1.7V3.57c-.3-.04-1.3-.12-2.48-.12-2.45 0-4.13 1.48-4.13 4.21v2.22H8.55V13h2.78v8h2.32Z"></path></svg>
+    </a>`;
+  brand.insertAdjacentElement('afterend',links);
+})();
