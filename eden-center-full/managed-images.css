@@ -1,0 +1,29 @@
+/* Loaded after both desktop and mobile rules; preserve the complete photograph. */
+[data-site-image].managed-site-image {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  background: #eef9fa !important;
+  overflow: hidden;
+}
+[data-site-image].managed-site-image::after { display: none !important; }
+[data-site-image].managed-site-image > img {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 640px !important;
+  max-height: min(70vh, 640px) !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 0 !important;
+}
+.cardImg[data-site-image].managed-site-image > img { max-height: 230px !important; }
+.personPhoto[data-site-image].managed-site-image > img { max-height: 340px !important; }
