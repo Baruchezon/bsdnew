@@ -84,7 +84,7 @@ function configureRussianManagedImages(){
   }
   if(!document.querySelector('script[src^="managed-images.js"]')){
     const script=document.createElement('script');
-    script.src='managed-images.js?v=20260921-ru-image-parity-1';
+    script.src='managed-images.js?v=20260921-mobile-1';
     script.defer=true;
     document.body.appendChild(script);
   }
