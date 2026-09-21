@@ -18,7 +18,78 @@ function addWhyEden(){const file=location.pathname.split('/').pop()||'index-ru.h
 'autism-ru.html':['Особенность Центра «Эден» — индивидуальная адаптация для людей в аутистическом спектре','Нет единого шаблона, подходящего всем. Мы подбираем темп, окружающую среду, способ знакомства с водой и формат занятий для каждого — для ребёнка, подростка или взрослого.',['Индивидуальный темп','Максимально привычная среда','Преемственность и вовлечение семьи']],
 'knowledge-ru.html':['Информация, помогающая семьям понять и сделать выбор','Информационный центр создан, чтобы дать понятные разъяснения перед принятием решения. Мы убеждены, что семья, понимающая процесс, сможет выбрать более обдуманно и прийти спокойнее.',['Понятный профессиональный контент','Вопросы, которые родители действительно задают','Прямая ссылка на страницы терапии']]
 };const data=map[file];if(!data)return;const [title,text,items]=data;const section=document.createElement('section');section.className='section alt whyEden';section.innerHTML=`<div class="container"><h2 class="title center">${title}</h2><p class="lead center">${text}</p><div class="featureGrid">${items.map(i=>`<div class="feature"><strong>${i}</strong><span>Это часть подхода Центра «Эден», где в центре внимания — человек, его безопасность и индивидуальная адаптация.</span></div>`).join('')}</div><p class="center" style="margin-top:1.2rem"><a class="btn light" href="contact-ru.html">Записаться на консультацию по подбору программы в Центр «Эден»</a></p></div>`;const footer=document.querySelector('footer');if(footer)footer.before(section)}
-normalizePhones();normalizeBrand();improveHeroCard();addWelcomeThought();addWhyEden();
+function configureRussianManagedImages(){
+  const file=location.pathname.split('/').pop()||'index-ru.html';
+  const bind=(element,slot,options={})=>{
+    if(!element)return;
+    element.dataset.siteImage=slot;
+    if(options.addPhoto)element.classList.add('photo');
+    if(options.clearStyle)element.removeAttribute('style');
+    if(options.hideUntilLoaded)element.hidden=true;
+    if(options.service){
+      element.classList.add('eden-managed-image-frame');
+      const row=element.closest('.serviceRow');
+      const reveal=()=>{
+        if(!element.classList.contains('managed-site-image'))return;
+        element.hidden=false;
+        if(row)row.classList.add('has-managed-image');
+      };
+      new MutationObserver(reveal).observe(element,{attributes:true,attributeFilter:['class']});
+      reveal();
+    }
+  };
+  if(file==='index-ru.html'||file===''){
+    document.querySelectorAll('.photo.heroPool').forEach(el=>bind(el,'pools'));
+    const cards=[...document.querySelectorAll('.cardImg')];
+    ['hydrotherapy_children','therapeutic_swimming','eden_baby','hydrotherapy_adults'].forEach((slot,index)=>bind(cards[index],slot));
+    bind(document.querySelector('.photo.baby'),'eden_baby');
+  }
+  const single={
+    'about-ru.html':['.ronitDirect','about'],
+    'eden-baby-ru.html':['.babyDirect','eden_baby',{clearStyle:true}],
+    'pools-ru.html':['.poolDirect','pools'],
+    'autism-ru.html':['.autismDirect','autism',{addPhoto:true,clearStyle:true}],
+    'cooking-baking-ru.html':['.cookingPhoto','cooking_baking'],
+    'hydrotherapy-children-ru.html':['.hydroChildDirect','hydrotherapy_children'],
+    'therapeutic-swimming-ru.html':['.swimDirect','therapeutic_swimming'],
+    'hydrotherapy-adults-ru.html':['.hydroAdultDirect','hydrotherapy_adults']
+  };
+  if(single[file])bind(document.querySelector(single[file][0]),single[file][1],single[file][2]);
+  if(file==='services-ru.html'){
+    const services={
+      '.svc-hydrotherapy-children':'hydrotherapy_children',
+      '.svc-therapeutic-swimming':'therapeutic_swimming',
+      '.svc-eden-baby':'eden_baby',
+      '.svc-emotional-water':'emotional_water',
+      '.svc-hydrotherapy-adults':'hydrotherapy_adults',
+      '.svc-swimming-lessons':'swimming_lessons',
+      '.svc-watsu':'watsu',
+      '.svc-water-exercise':'water_exercise',
+      '.svc-parent-guidance':'parent_guidance',
+      '.svc-cooking-baking':'cooking_baking'
+    };
+    Object.entries(services).forEach(([selector,slot])=>bind(document.querySelector(selector),slot,{service:true}));
+  }
+  if(file==='team-ru.html'){
+    bind(document.querySelector('.team-ronit'),'team_ronit',{hideUntilLoaded:true});
+    bind(document.querySelector('.team-adva'),'team_adva',{hideUntilLoaded:true});
+    bind(document.querySelector('.team-aviv'),'team_aviv',{hideUntilLoaded:true});
+  }
+  if(!document.querySelector('[data-site-image]'))return;
+  if(!document.getElementById('ruManagedImageParity')){
+    const style=document.createElement('style');
+    style.id='ruManagedImageParity';
+    style.textContent='html[lang="ru"] .photo.managed-site-image{min-height:390px!important;height:auto!important;overflow:hidden!important}html[lang="ru"] .photo.managed-site-image>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;margin:0!important;object-fit:cover!important;object-position:center!important}html[lang="ru"] .autismDirect.photo{min-height:420px!important;margin:28px 0!important}html[lang="ru"] .serviceVisual.eden-managed-image-frame{display:none!important}html[lang="ru"] .serviceVisual.eden-managed-image-frame.managed-site-image{display:flex!important;align-items:center!important;justify-content:center!important;min-height:210px!important;max-height:none!important;overflow:hidden!important}html[lang="ru"] .serviceVisual.eden-managed-image-frame.managed-site-image>img{position:static!important;inset:auto!important;width:100%!important;height:240px!important;max-width:100%!important;max-height:240px!important;margin:0!important;object-fit:cover!important;object-position:center!important;border-radius:14px!important}@media(max-width:900px){html[lang="ru"] .serviceVisual.eden-managed-image-frame.managed-site-image{min-height:220px!important}html[lang="ru"] .serviceVisual.eden-managed-image-frame.managed-site-image>img{height:clamp(220px,58vw,320px)!important;max-height:320px!important}}@media(max-width:640px){html[lang="ru"] .photo.managed-site-image{min-height:290px!important}html[lang="ru"] .autismDirect.photo{min-height:320px!important}}';
+    document.head.appendChild(style);
+  }
+  if(!document.querySelector('script[src^="managed-images.js"]')){
+    const script=document.createElement('script');
+    script.src='managed-images.js?v=20260921-ru-image-parity-1';
+    script.defer=true;
+    document.body.appendChild(script);
+  }
+}
+configureRussianManagedImages();normalizePhones();normalizeBrand();improveHeroCard();addWelcomeThought();addWhyEden();
 const menuBtn=document.querySelector('.mobileBtn');const menu=document.querySelector('.menu');if(menuBtn&&menu){menuBtn.addEventListener('click',()=>{menu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',menu.classList.contains('open'))});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}))}
 const form=document.querySelector('[data-lead-form]');if(form){form.addEventListener('submit',async e=>{e.preventDefault();const msg=form.querySelector('.formMsg');const btn=form.querySelector('button[type=submit]');const data=Object.fromEntries(new FormData(form).entries());data.source='website-v2';data.sourcePage=location.href;data.fullName=data.childName||data.fullName||data.parentName;msg.className='formMsg';msg.textContent='';btn.disabled=true;btn.textContent='Отправляем запрос...';try{const r=await fetch('https://eden-center-crm.onrender.com/api/public/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error('http');msg.className='formMsg ok';msg.textContent='Спасибо! Запрос успешно получен. Команда Центра «Эден» свяжется с вами в ближайшее время.';form.reset()}catch(err){msg.className='formMsg bad';msg.innerHTML='Сейчас не удалось отправить обращение. Можно позвонить в Центр по номеру <bdi class="phone-ltr" dir="ltr">'+PRIMARY_PHONE_DISPLAY+'</bdi>.'}finally{btn.disabled=false;btn.textContent='Отправить запрос в Центр «Эден»'}})}
 // cooking-baking-nav
