@@ -1,0 +1,130 @@
+name: Snapshot Eden live site
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    if: github.head_ref == 'snapshot/eden-live-before-russian-20260921'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout snapshot branch
+        uses: actions/checkout@v4
+        with:
+          ref: snapshot/eden-live-before-russian-20260921
+          fetch-depth: 0
+
+      - name: Mirror current live Eden public site
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f .eden-live-snapshot-complete ]]; then
+            echo "Snapshot already complete"
+            exit 0
+          fi
+          rm -rf eden-center-full
+          mkdir -p eden-center-full
+          node <<'NODE'
+          const fs=require('fs');
+          const path=require('path');
+          const {URL}=require('url');
+          const ORIGIN='https://eden-center.co.il';
+          const root=path.resolve('eden-center-full');
+          const queue=['/','/robots.txt','/sitemap.xml'];
+          const seen=new Set();
+          const max=500;
+
+          function normalize(raw, base){
+            try{
+              if(!raw || /^(mailto:|tel:|javascript:|data:|#)/i.test(raw)) return null;
+              const u=new URL(raw, base);
+              if(u.origin!==ORIGIN) return null;
+              if(u.pathname.startsWith('/api/')) return null;
+              u.hash=''; u.search='';
+              return u.pathname || '/';
+            }catch{return null}
+          }
+
+          function filePath(p, contentType){
+            let rel=decodeURIComponent(p).replace(/^\/+/, '');
+            if(!rel) rel='index.html';
+            if(rel.endsWith('/')) rel += 'index.html';
+            if(!path.extname(rel) && (contentType||'').includes('text/html')) rel += '.html';
+            const full=path.resolve(root,rel);
+            if(!full.startsWith(root+path.sep) && full!==root) throw new Error('unsafe path '+p);
+            return full;
+          }
+
+          function enqueueFromHtml(txt, base){
+            for(const m of txt.matchAll(/(?:href|src)=["']([^"'<>]+)["']/gi)){
+              const p=normalize(m[1],base); if(p && !seen.has(p) && !queue.includes(p)) queue.push(p);
+            }
+            for(const m of txt.matchAll(/srcset=["']([^"']+)["']/gi)){
+              for(const part of m[1].split(',')){
+                const raw=part.trim().split(/\s+/)[0];
+                const p=normalize(raw,base); if(p && !seen.has(p) && !queue.includes(p)) queue.push(p);
+              }
+            }
+          }
+
+          function enqueueFromText(txt, base){
+            for(const m of txt.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)){
+              const p=normalize(m[1],base); if(p && !seen.has(p) && !queue.includes(p)) queue.push(p);
+            }
+            for(const m of txt.matchAll(/["']((?:assets|images|fonts)\/[^"'?#]+)["']/gi)){
+              const p=normalize('/'+m[1],base); if(p && !seen.has(p) && !queue.includes(p)) queue.push(p);
+            }
+          }
+
+          (async()=>{
+            while(queue.length && seen.size<max){
+              const p=queue.shift();
+              if(seen.has(p)) continue;
+              seen.add(p);
+              const url=ORIGIN+p;
+              let res;
+              try{res=await fetch(url,{redirect:'follow',headers:{'user-agent':'EdenProductionSnapshot/1.0'}})}
+              catch(e){console.log('FETCH_FAIL',p,e.message);continue}
+              if(!res.ok){console.log('SKIP',res.status,p);continue}
+              const ct=res.headers.get('content-type')||'';
+              const buf=Buffer.from(await res.arrayBuffer());
+              const fp=filePath(p,ct);
+              fs.mkdirSync(path.dirname(fp),{recursive:true});
+              fs.writeFileSync(fp,buf);
+              console.log('SAVED',res.status,p,buf.length,ct);
+              if(/text\/html|text\/css|javascript|application\/json|text\/plain/i.test(ct)){
+                const txt=buf.toString('utf8');
+                if(/text\/html/i.test(ct)) enqueueFromHtml(txt,url);
+                enqueueFromText(txt,url);
+              }
+            }
+            console.log('SNAPSHOT_FILES',seen.size);
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
+          test -f eden-center-full/index.html
+          printf 'snapshot=%s\n' "$(date -u +%FT%TZ)" > .eden-live-snapshot-complete
+
+      - name: Commit live snapshot to branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add eden-center-full .eden-live-snapshot-complete
+          if git diff --cached --quiet; then
+            echo "No snapshot changes"
+            exit 0
+          fi
+          git commit -m 'Snapshot live Eden public site before Russian production overlay'
+          git push origin HEAD:snapshot/eden-live-before-russian-20260921
