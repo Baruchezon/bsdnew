@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">תמונת צוות תתווסף בקרוב</title>
+  <desc id="desc">מסגרת ניטרלית זמנית לכרטיס איש צוות במרכז עדן</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef9fb"/>
+      <stop offset="1" stop-color="#dff2f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="420" rx="30" fill="url(#bg)"/>
+  <circle cx="300" cy="165" r="72" fill="#b9dce3"/>
+  <path d="M168 365c20-82 70-123 132-123s112 41 132 123" fill="#b9dce3"/>
+  <text x="300" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#49757f">תמונת צוות תתווסף דרך מערכת מרכז עדן</text>
+</svg>
