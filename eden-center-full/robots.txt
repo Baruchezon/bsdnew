@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eden-center.co.il/sitemap.xml
