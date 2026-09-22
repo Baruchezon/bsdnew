@@ -1,0 +1,566 @@
+{
+  "date": "2026-09-22",
+  "domain": "https://eden-center.co.il",
+  "repository": "Baruchezon/bsdnew",
+  "publishDirectory": "eden-center-v2",
+  "renderServiceId": "srv-dafsiuv40ujc73cpinsg",
+  "dnsEvidence": "www CNAME eden-center-website-preview.onrender.com",
+  "backupBranch": "backup/eden-public-before-seo-20260922",
+  "productionCommit": "ed0331647acc58af911c6d49f9c5f1100a3abcf3",
+  "pages": [
+    {
+      "url": "https://eden-center.co.il/about-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/about-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/about.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/about.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/accessibility-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/accessibility-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/accessibility.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/accessibility.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/autism-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/autism-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/autism.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/autism.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/contact-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/contact-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/contact.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/contact.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/cookies.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/cookies.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/cooking-baking-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/cooking-baking-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/cooking-baking.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/cooking-baking.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/eden-baby-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/eden-baby-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/eden-baby.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/eden-baby.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/hydrotherapy-adults-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/hydrotherapy-adults-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/hydrotherapy-adults.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/hydrotherapy-adults.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/hydrotherapy-children-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/hydrotherapy-children-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/hydrotherapy-children.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/hydrotherapy-children.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/index-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/index-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/knowledge-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/knowledge-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/knowledge.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/knowledge.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/pools-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/pools-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/pools.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/pools.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/privacy-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/privacy-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/privacy.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/privacy.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/reviews-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/reviews-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/reviews.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/reviews.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/services-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/services-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/services.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/services.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/team-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/team-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/team.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/team.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/terms-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/terms-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/terms.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/terms.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/therapeutic-swimming-ru.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/therapeutic-swimming-ru.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/therapeutic-swimming.html",
+      "status": 200,
+      "location": null,
+      "canonical": [
+        "https://eden-center.co.il/therapeutic-swimming.html"
+      ],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/sitemap.xml?seo=20260922",
+      "status": 200,
+      "location": null,
+      "canonical": [],
+      "noindex": false,
+      "sitemap_urls": 35,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/robots.txt",
+      "status": 200,
+      "location": null,
+      "canonical": [],
+      "noindex": false,
+      "sitemap_urls": 0,
+      "custom404": false
+    },
+    {
+      "url": "https://eden-center.co.il/sitemap.xml",
+      "status": 200,
+      "location": null,
+      "canonical": [],
+      "noindex": false,
+      "sitemap_urls": 35,
+      "custom404": false
+    }
+  ],
+  "legacyChecks": [
+    {
+      "url": "https://eden-center.co.il/אודות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/גלריה",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/אודות/גלריה",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/שירותים",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/טיפולים",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/הצוות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/צוות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/ביקורות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/צור קשר",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/צור-קשר",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/בריכות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/הבריכות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/שחיית-תינוקות",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/הידרותרפיה-ילדים",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/הידרותרפיה-מבוגרים",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/שחייה-טיפולית",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/טיפול-במים-על-הרצף",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/מרכז-ידע",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "https://eden-center.co.il/דרושים",
+      "status": 404,
+      "destination": null,
+      "branded404": true
+    },
+    {
+      "url": "http://eden-center.co.il",
+      "status": 301,
+      "destination": "https://eden-center.co.il/",
+      "branded404": false
+    },
+    {
+      "url": "http://www.eden-center.co.il",
+      "status": 301,
+      "destination": "https://www.eden-center.co.il/",
+      "branded404": false
+    },
+    {
+      "url": "https://www.eden-center.co.il",
+      "status": 301,
+      "destination": "https://eden-center.co.il/",
+      "branded404": false
+    }
+  ],
+  "redirectsStatus": "prepared_not_applied_requires_Render_routes_access",
+  "searchConsoleStatus": "verification_file_live_200_user_verification_pending",
+  "limitations": [
+    "Search results are not an exhaustive inventory of Google index",
+    "Dynamic article feed audit excluded because CRM endpoint access rejected by approval review",
+    "Mobile visual QA pending",
+    "HTTP www still has two redirects"
+  ]
+}

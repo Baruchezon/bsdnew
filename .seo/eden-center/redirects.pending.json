@@ -1,0 +1,182 @@
+[
+  {
+    "type": "redirect",
+    "source": "/אודות",
+    "destination": "https://eden-center.co.il/about.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/אודות/",
+    "destination": "https://eden-center.co.il/about.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/גלריה",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/גלריה/",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/אודות/גלריה",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/אודות/גלריה/",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/שירותים",
+    "destination": "https://eden-center.co.il/services.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/שירותים/",
+    "destination": "https://eden-center.co.il/services.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/טיפולים",
+    "destination": "https://eden-center.co.il/services.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/טיפולים/",
+    "destination": "https://eden-center.co.il/services.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הצוות",
+    "destination": "https://eden-center.co.il/team.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הצוות/",
+    "destination": "https://eden-center.co.il/team.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/צוות",
+    "destination": "https://eden-center.co.il/team.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/צוות/",
+    "destination": "https://eden-center.co.il/team.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/ביקורות",
+    "destination": "https://eden-center.co.il/reviews.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/ביקורות/",
+    "destination": "https://eden-center.co.il/reviews.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/צור קשר",
+    "destination": "https://eden-center.co.il/contact.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/צור קשר/",
+    "destination": "https://eden-center.co.il/contact.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/צור-קשר",
+    "destination": "https://eden-center.co.il/contact.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/צור-קשר/",
+    "destination": "https://eden-center.co.il/contact.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/בריכות",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/בריכות/",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הבריכות",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הבריכות/",
+    "destination": "https://eden-center.co.il/pools.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/שחיית-תינוקות",
+    "destination": "https://eden-center.co.il/eden-baby.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/שחיית-תינוקות/",
+    "destination": "https://eden-center.co.il/eden-baby.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הידרותרפיה-ילדים",
+    "destination": "https://eden-center.co.il/hydrotherapy-children.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הידרותרפיה-ילדים/",
+    "destination": "https://eden-center.co.il/hydrotherapy-children.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הידרותרפיה-מבוגרים",
+    "destination": "https://eden-center.co.il/hydrotherapy-adults.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/הידרותרפיה-מבוגרים/",
+    "destination": "https://eden-center.co.il/hydrotherapy-adults.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/שחייה-טיפולית",
+    "destination": "https://eden-center.co.il/therapeutic-swimming.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/שחייה-טיפולית/",
+    "destination": "https://eden-center.co.il/therapeutic-swimming.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/טיפול-במים-על-הרצף",
+    "destination": "https://eden-center.co.il/autism.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/טיפול-במים-על-הרצף/",
+    "destination": "https://eden-center.co.il/autism.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/מרכז-ידע",
+    "destination": "https://eden-center.co.il/knowledge.html"
+  },
+  {
+    "type": "redirect",
+    "source": "/מרכז-ידע/",
+    "destination": "https://eden-center.co.il/knowledge.html"
+  }
+]
