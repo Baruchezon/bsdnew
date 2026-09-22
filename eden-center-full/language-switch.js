@@ -20,7 +20,7 @@
   const sw=document.createElement('div');
   sw.className='prodLangSwitch';
   sw.setAttribute('aria-label','בחירת שפה');
-  sw.innerHTML='<a class="active" href="'+here+'" lang="he">עברית</a><a href="'+target+'" lang="ru">Русский</a>';
+  sw.innerHTML='<a class="active" href="'+(here==='index.html'?'/':here)+'" lang="he">עברית</a><a href="'+target+'" lang="ru">Русский</a>';
   const social=navrow.querySelector('.edenSocialLinks');
   if(social)social.insertAdjacentElement('afterend',sw);else navrow.appendChild(sw);
 })();
