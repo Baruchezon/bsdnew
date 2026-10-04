@@ -1,7 +1,8 @@
 // Public images only. No CRM credentials or patient data are used here.
 (() => {
   const api = 'https://eden-center-crm.onrender.com/api/settings/site-image/';
-  const version = Date.now();
+  // One cache key per day instead of per page view, so browsers/CDN can reuse the image.
+  const version = Math.floor(Date.now() / 86400000);
   const requests = new Map();
 
   function load(slot) {
@@ -24,7 +25,8 @@
     return requests.get(slot);
   }
 
-  document.querySelectorAll('[data-site-image]').forEach((container) => {
+  // Containers marked data-static-image already contain the optimised image in the HTML (no swap, no layout shift).
+  document.querySelectorAll('[data-site-image]:not([data-static-image])').forEach((container) => {
     const slot = container.dataset.siteImage;
     load(slot).then((loaded) => {
       const image = document.createElement('img');

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap');
+/* Google Fonts @import removed (render-blocking chain); fonts are loaded async from the HTML <head>. */
 :root{--page-max:1560px;--nav-radius:15px}
 html{font-size:13px}
 body{font-family:"Heebo",Arial,sans-serif;font-size:15px;font-weight:500;color:#0a3850;line-height:1.55}

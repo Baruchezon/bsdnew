@@ -1,0 +1,23 @@
+/* Subset of compliance.css for the Russian (LTR) pages: skip link, footer legal links, cookie banner. Does not restyle buttons/forms. */
+.privacy-banner[hidden] { display: none !important; }
+body { padding-bottom: var(--privacy-space, 0px); }
+.skip-link { position: fixed; top: 10px; right: 10px; z-index: 1000; padding: 12px 18px; background: #fff; color: #07324a; border: 2px solid #07324a; border-radius: 8px; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+#main-content:focus { outline: none; }
+.legal-links { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; padding-top: 18px; font-size: .9rem; }
+.legal-links a, .legal-links button { display: inline-block; min-height: 32px; color: #e5f7fb; padding: 5px 0; font: inherit; background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-banner { position: fixed; z-index: 200; bottom: 12px; left: 12px; width: min(540px, calc(100% - 24px)); max-height: 65vh; overflow: auto; background: #fff; color: #173b48; border: 1px solid #9bbcc3; border-radius: 14px; padding: 14px 18px; box-shadow: 0 6px 25px #07324a25; font-size: .9rem; line-height: 1.6; }
+.privacy-banner p { margin: 0 0 10px; }
+.privacy-banner strong { display: block; }
+.privacy-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.privacy-actions button { font: inherit; font-weight: 700; cursor: pointer; padding: 9px 12px; min-height: 44px; border: 1px solid #315e68; border-radius: 8px; color: #173b48; background: #f1f8f8; }
+.privacy-actions a, .privacy-notice a, .consent a, .content a { text-decoration: underline; text-underline-offset: 3px; }
+.privacy-open .stickyContact { display: none; }
+@media (max-width: 640px) { .privacy-banner { bottom: 8px; padding: 12px; } .legal-links { gap: 8px 14px; } }
+@media (forced-colors: active) { .privacy-banner, .privacy-actions button { border: 1px solid CanvasText; } }
+@media print { .privacy-banner, .stickyContact, .skip-link, [data-privacy-settings] { display: none !important; } body { padding-bottom: 0; } }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.related-links { margin-top: 1.6rem; }
+.contact-directions a { text-decoration: underline; text-underline-offset: 3px; }
+/* footer brand name + description inherited dark page colours on the dark footer (contrast 1.14:1 and 2.24:1, WCAG 1.4.3); restore the footer text colour */
+.footer .footerGrid .brand strong, .footer .footerGrid p { color: #d9f5fb; }

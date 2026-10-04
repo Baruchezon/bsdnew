@@ -44,8 +44,9 @@ form.addEventListener('submit',async e=>{
   if(data.contactConsent!=='yes')return;
   data.source='website-v2';
   data.sourcePage=location.origin+location.pathname;
+  data.pageLanguage='he';
   data.fullName=data.childName||data.fullName||data.parentName;
-  data.privacyVersion='2026-09-13';
+  data.privacyVersion='2026-10-03';
   data.contactConsentAt=new Date().toISOString();
   msg.className='formMsg';msg.textContent='';btn.disabled=true;btn.textContent='שולחים את הפנייה...';
   const controller=new AbortController();
