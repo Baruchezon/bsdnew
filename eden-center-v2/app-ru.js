@@ -1,11 +1,11 @@
-const themeLink=document.createElement('link');themeLink.rel='stylesheet';themeLink.href='theme.css?v=20260908-5';document.head.appendChild(themeLink);
-const fixesLink=document.createElement('link');fixesLink.rel='stylesheet';fixesLink.href='site-fixes.css?v=20260914-social-1';document.head.appendChild(fixesLink);const ruStyle=document.createElement('link');ruStyle.rel='stylesheet';ruStyle.href='site-ru.css?v=20260920-prod1';document.head.appendChild(ruStyle);
-const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink.href='https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap';document.head.appendChild(fontLink);
+const themeLink=document.createElement('link');themeLink.rel='stylesheet';themeLink.href='theme.css?v=20260908-5';if(!document.querySelector('link[href^="theme.css"]'))document.head.appendChild(themeLink);
+const fixesLink=document.createElement('link');fixesLink.rel='stylesheet';fixesLink.href='site-fixes.css?v=20260914-social-1';if(!document.querySelector('link[href^="site-fixes.css"]'))document.head.appendChild(fixesLink);const ruStyle=document.createElement('link');ruStyle.rel='stylesheet';ruStyle.href='site-ru.css?v=20260920-prod1';if(!document.querySelector('link[href^="site-ru.css"]'))document.head.appendChild(ruStyle);
+const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink.href='https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;600;700;800;900&display=swap';if(!document.querySelector('link[href^="https://fonts.googleapis.com/css2"]'))document.head.appendChild(fontLink);
 const PRIMARY_PHONE_DISPLAY='08-6335333';const PRIMARY_PHONE_HREF='086335333';const LOGO='https://media.easy.co.il/images/UserThumbs/10143668_1752242943315_0.png';
 function normalizePhones(){const re=/(?:054[\s-]*909[\s-]*1504|050[\s-]*742[\s-]*6263|08[\s-]*633[\s-]*5333)/g;document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:'+PRIMARY_PHONE_HREF;a.textContent=PRIMARY_PHONE_DISPLAY;a.setAttribute('dir','ltr');a.classList.add('phone-ltr')});const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{const p=n.parentElement;if(!p||p.closest('a[href^="tel:"]')||['SCRIPT','STYLE'].includes(p.tagName))return;const text=n.nodeValue;re.lastIndex=0;if(!re.test(text))return;re.lastIndex=0;const frag=document.createDocumentFragment();let last=0;for(const m of text.matchAll(re)){frag.append(document.createTextNode(text.slice(last,m.index)));const bdi=document.createElement('bdi');bdi.className='phone-ltr';bdi.dir='ltr';bdi.textContent=PRIMARY_PHONE_DISPLAY;frag.append(bdi);last=m.index+m[0].length}frag.append(document.createTextNode(text.slice(last)));n.replaceWith(frag)})}
 function normalizeBrand(){document.querySelectorAll('.nav .brand').forEach(brand=>{if(!brand.querySelector('img')){const img=document.createElement('img');img.src=LOGO;img.alt='Логотип Центра «Эден»';brand.prepend(img)}if(!brand.querySelector('strong')){const s=document.createElement('strong');s.textContent='Центр «Эден»';brand.appendChild(s)}});document.querySelectorAll('.menu a[href*="eden-baby"]').forEach(a=>a.textContent='Плавание для младенцев');document.querySelectorAll('.menu a').forEach(a=>{const here=location.pathname.split('/').pop()||'index-ru.html';const there=a.getAttribute('href').split('/').pop();if(here===there)a.classList.add('active')})}
 function improveHeroCard(){const quick=document.querySelector('.heroCard .quick');if(quick){quick.innerHTML='<a href="team-ru.html">Профессиональная и опытная команда</a><a href="pools-ru.html">Качественные бассейны и постоянный контроль</a><a href="about-ru.html">Индивидуальное сопровождение и непрерывность терапии</a>'}document.querySelectorAll('.crm').forEach(el=>{const section=el.closest('section');if(section)section.remove();else el.remove()})}
-function addWelcomeThought(){const file=location.pathname.split('/').pop()||'index-ru.html';if(file!=='index-ru.html'&&file!=='')return;const actions=document.querySelector('.heroCopy .actions');if(!actions||document.querySelector('.welcomeThought'))return;const thoughts=['Иногда самый большой шаг начинается с маленькой капли','У каждого ребёнка свой темп — мы здесь, чтобы сопровождать его.','Каждый маленький шаг — это целый мир','Настоящие перемены начинаются там, где тебя действительно понимают.','В Центре «Эден» в первую очередь видят человека, а не его трудности.','Иногда всё, что нужно — поддерживающая среда и человек, который верит в тебя.','Вода, доверие, терпение — так начинается путь','Каждому ребёнку нужно место, где верят в его способности','Путь к прогрессу начинается с чувства уверенности','Мы не торопим процесс, мы сопровождаем его','Профессиональное место может ощущаться как дом','В воде проявляются возможности, которые не всегда видны на суше.','Каждая семья заслуживает чувствовать, что рядом есть кто‑то, кто идёт с ней по этому пути.','Иногда первая улыбка в воде говорит больше, чем тысяча слов.','Не все пути выглядят одинаково — в этом и заключается их красота.','В Центре «Эден» каждый человек получает своё место, своё время и свой путь'];let previous=-1;try{previous=Number(sessionStorage.getItem('edenThoughtIndex')??-1)}catch(e){}let index=Math.floor(Math.random()*thoughts.length);if(thoughts.length>1&&index===previous)index=(index+1)%thoughts.length;try{sessionStorage.setItem('edenThoughtIndex',String(index))}catch(e){}const el=document.createElement('div');el.className='welcomeThought';el.setAttribute('aria-live','polite');el.innerHTML='<span class="welcomeSpark">✦</span><span>'+thoughts[index]+'</span><span class="welcomeSpark">✦</span>';actions.insertAdjacentElement('afterend',el)}
+function addWelcomeThought(){const file=location.pathname.split('/').pop()||'index-ru.html';if(file!=='index-ru.html'&&file!=='')return;const actions=document.querySelector('.heroCopy .actions');if(!actions||document.querySelector('.welcomeThought'))return;const thoughts=['Иногда самый большой шаг начинается с маленькой капли','У каждого ребёнка свой темп — мы здесь, чтобы сопровождать его.','Каждый маленький шаг — это целый мир','Настоящие перемены начинаются там, где тебя действительно понимают.','В Центре «Эден» в первую очередь видят человека, а не его трудности.','Иногда всё, что нужно — поддерживающая среда и человек, который верит в тебя.','Вода, доверие, терпение — так начинается путь','Каждому ребёнку нужно место, где верят в его способности','Путь к прогрессу начинается с чувства уверенности','Мы не торопим процесс, мы сопровождаем его','Профессиональное место может ощущаться как дом','В воде проявляются возможности, которые не всегда видны на суше.','Каждая семья заслуживает чувствовать, что рядом есть кто‑то, кто идёт с ней по этому пути.','Иногда первая улыбка в воде говорит больше, чем тысяча слов.','Не все пути выглядят одинаково — в этом и заключается их красота.','В Центре «Эден» каждый человек получает своё место, своё время и свой путь'];let previous=-1;try{if(window.EdenPrivacy?.allowsPreferences())previous=Number(sessionStorage.getItem('edenThoughtIndex')??-1)}catch(e){}let index=Math.floor(Math.random()*thoughts.length);if(thoughts.length>1&&index===previous)index=(index+1)%thoughts.length;try{if(window.EdenPrivacy?.allowsPreferences())sessionStorage.setItem('edenThoughtIndex',String(index))}catch(e){}const el=document.createElement('div');el.className='welcomeThought';el.setAttribute('aria-live','polite');el.innerHTML='<span class="welcomeSpark">✦</span><span>'+thoughts[index]+'</span><span class="welcomeSpark">✦</span>';actions.insertAdjacentElement('afterend',el)}
 function addWhyEden(){const file=location.pathname.split('/').pop()||'index-ru.html';if(['index-ru.html','','contact-ru.html','privacy-ru.html','accessibility-ru.html','terms-ru.html','reviews-ru.html'].includes(file)||document.querySelector('.whyEden'))return;const map={
 'about-ru.html':['Почему семьи выбирают Центр «Эден»','Особенность Центра «Эден» — сочетание профессиональной водной среды, команды, которая знает человека, а не только терапию, индивидуальной адаптации и обеспечения чёткой преемственности на протяжении всего пути.',['Индивидуальный подход, а не универсальная схема','Специальные бассейны и тщательно организованная среда','Профессиональная команда и семейное отношение']],
 'services-ru.html':['Не просто разнообразие направлений терапии — а правильный подбор','Мы не начинаем с названия направления терапии, а с потребности. Цель — подобрать вид активности, темп и формат так, чтобы они соответствовали человеку, который приходит к нам.',['Подбор в зависимости от возраста и возможностей','Небольшие группы и индивидуальный подход','Преемственность между направлениями терапии и видами деятельности']],
@@ -21,7 +21,7 @@ function addWhyEden(){const file=location.pathname.split('/').pop()||'index-ru.h
 function configureRussianManagedImages(){
   const file=location.pathname.split('/').pop()||'index-ru.html';
   const bind=(element,slot,options={})=>{
-    if(!element)return;
+    if(!element||element.hasAttribute('data-static-image'))return; // image already rendered in the HTML
     element.dataset.siteImage=slot;
     if(options.addPhoto)element.classList.add('photo');
     if(options.clearStyle)element.removeAttribute('style');
@@ -84,14 +84,45 @@ function configureRussianManagedImages(){
   }
   if(!document.querySelector('script[src^="managed-images.js"]')){
     const script=document.createElement('script');
-    script.src='managed-images.js?v=20260921-ru-image-parity-1';
+    script.src='managed-images.js?v=20261003-1';
     script.defer=true;
     document.body.appendChild(script);
   }
 }
 configureRussianManagedImages();normalizePhones();normalizeBrand();improveHeroCard();addWelcomeThought();addWhyEden();
 const menuBtn=document.querySelector('.mobileBtn');const menu=document.querySelector('.menu');if(menuBtn&&menu){menuBtn.addEventListener('click',()=>{menu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',menu.classList.contains('open'))});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}))}
-const form=document.querySelector('[data-lead-form]');if(form){form.addEventListener('submit',async e=>{e.preventDefault();const msg=form.querySelector('.formMsg');const btn=form.querySelector('button[type=submit]');const data=Object.fromEntries(new FormData(form).entries());data.source='website-v2';data.sourcePage=location.href;data.fullName=data.childName||data.fullName||data.parentName;msg.className='formMsg';msg.textContent='';btn.disabled=true;btn.textContent='Отправляем запрос...';try{const r=await fetch('https://eden-center-crm.onrender.com/api/public/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error('http');msg.className='formMsg ok';msg.textContent='Спасибо! Запрос успешно получен. Команда Центра «Эден» свяжется с вами в ближайшее время.';form.reset()}catch(err){msg.className='formMsg bad';msg.innerHTML='Сейчас не удалось отправить обращение. Можно позвонить в Центр по номеру <bdi class="phone-ltr" dir="ltr">'+PRIMARY_PHONE_DISPLAY+'</bdi>.'}finally{btn.disabled=false;btn.textContent='Отправить запрос в Центр «Эден»'}})}
+document.querySelectorAll('[data-lead-form]').forEach(form=>{form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));
+  const phoneInput=form.querySelector('[name=phone]');const nameInput=form.querySelector('[name=parentName]');
+  const digits=phoneInput.value.replace(/\D/g,'');
+  phoneInput.setCustomValidity(digits.length>=7&&digits.length<=15?'':'Введите корректный номер телефона (от 7 до 15 цифр).');
+  nameInput.setCustomValidity(nameInput.value.trim()?'':'Введите имя, чтобы мы могли с вами связаться.');
+  for(const input of [phoneInput,nameInput])input.addEventListener('input',()=>{input.setCustomValidity('');input.removeAttribute('aria-invalid')},{once:true});
+  if(!form.reportValidity()){form.querySelectorAll(':invalid').forEach(el=>el.setAttribute('aria-invalid','true'));return;}
+  const msg=form.querySelector('.formMsg');const btn=form.querySelector('button[type=submit]');
+  if(btn.disabled)return;
+  const data=Object.fromEntries(new FormData(form).entries());
+  if(data.website)return;                       // honeypot filled -> bot, same as the Hebrew handler
+  if(data.contactConsent!=='yes')return;        // consent is required and now actually sent
+  data.source='website-v2';
+  data.sourcePage=location.origin+location.pathname;   // same format as Hebrew (no query string / UTM)
+  data.pageLanguage='ru';
+  data.fullName=data.childName||data.fullName||data.parentName;
+  data.privacyVersion='ru-2026-10';
+  data.contactConsentAt=new Date().toISOString();
+  msg.className='formMsg';msg.textContent='';btn.disabled=true;btn.textContent='Отправляем запрос...';
+  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);
+  try{
+    const r=await fetch('https://eden-center-crm.onrender.com/api/public/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:controller.signal,credentials:'omit'});
+    const result=await r.json().catch(()=>({}));
+    if(!r.ok||result?.ok!==true)throw new Error('crm');
+    msg.className='formMsg ok';msg.textContent='Спасибо! Запрос успешно получен. Команда Центра «Эден» свяжется с вами в ближайшее время.';
+    form.reset();
+  }catch(err){
+    msg.className='formMsg bad';msg.innerHTML='Сейчас не удалось отправить обращение. Можно позвонить в Центр по номеру <bdi class="phone-ltr" dir="ltr">'+PRIMARY_PHONE_DISPLAY+'</bdi>.';
+  }finally{clearTimeout(timeout);btn.disabled=false;btn.textContent='Отправить запрос в Центр «Эден»';}
+})});
 // cooking-baking-nav
 (function addCookingBakingNav(){
   document.querySelectorAll('.menu').forEach(menu=>{

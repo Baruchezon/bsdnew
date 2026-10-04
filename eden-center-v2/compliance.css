@@ -36,3 +36,9 @@ body { padding-bottom: var(--privacy-space, 0px); }
 .footer .heading-from-h4 { font-size: 1rem; color: #fff; margin: .2rem 0 .8rem; }
 .article .heading-from-h3 { font-size: 1.2rem; margin: .6rem 0; }
 @media(max-width:640px){.lead-fields{grid-template-columns: minmax(0,1fr);}}
+
+/* 2026-10 SEO fixes: related links block and directions links */
+.related-links { margin-top: 1.6rem; }
+.contact-directions a { text-decoration: underline; text-underline-offset: 3px; }
+/* footer brand name + description inherited dark page colours on the dark footer (contrast 1.14:1 and 2.24:1, WCAG 1.4.3); restore the footer text colour */
+.footer .footerGrid .brand strong, .footer .footerGrid p { color: #d9f5fb; }

@@ -25,7 +25,7 @@
   function loadBasicAnalytics() {
     if (document.querySelector('script[data-eden-analytics]')) return;
     const script = document.createElement('script');
-    script.src = 'site-analytics.js?v=20260913-2';
+    script.src = '/site-analytics.js?v=20260913-2';
     script.defer = true;
     script.dataset.edenAnalytics = 'true';
     document.head.append(script);
@@ -38,11 +38,20 @@
     allowsAnalytics: () => choice?.analytics === true,
   };
 
+  const ru = (document.documentElement.lang || '').toLowerCase().startsWith('ru');
+  const text = ru ? {
+    label: 'Настройки конфиденциальности и cookie',
+    html: '<p><strong>Cookie на сайте</strong> Мы анонимно считаем посещения и просмотры, чтобы понимать, какие страницы полезны. С вашего согласия мы также сможем получать дополнительные общие данные, например источник перехода и тип устройства.</p><div class="privacy-actions"><button type="button" data-choice="necessary">Только необходимые</button><button type="button" data-choice="analytics">Принять cookie</button><a href="/cookies-ru.html">Подробнее</a></div><p class="privacy-storage-note" hidden></p>'
+  } : {
+    label: 'העדפות פרטיות ועוגיות',
+    html: '<p><strong>עוגיות באתר</strong> אנחנו סופרים באופן אנונימי כניסות וצפיות כדי לדעת אילו דפים שימושיים. באישורכם נוכל לקבל גם נתונים כלליים נוספים כמו מקור הגעה וסוג המכשיר.</p><div class="privacy-actions"><button type="button" data-choice="necessary">רק עוגיות נחוצות</button><button type="button" data-choice="analytics">אישור עוגיות</button><a href="/cookies.html">מידע נוסף</a></div><p class="privacy-storage-note" hidden></p>'
+  };
+
   function setup() {
     const panel = document.createElement('aside');
     panel.className = 'privacy-banner';
-    panel.setAttribute('aria-label', 'העדפות פרטיות ועוגיות');
-    panel.innerHTML = '<p><strong>עוגיות באתר</strong> אנחנו סופרים באופן אנונימי כניסות וצפיות כדי לדעת אילו דפים שימושיים. באישורכם נוכל לקבל גם נתונים כלליים נוספים כמו מקור הגעה וסוג המכשיר.</p><div class="privacy-actions"><button type="button" data-choice="necessary">רק עוגיות נחוצות</button><button type="button" data-choice="analytics">אישור עוגיות</button><a href="cookies.html">מידע נוסף</a></div><p class="privacy-storage-note" hidden></p>';
+    panel.setAttribute('aria-label', text.label);
+    panel.innerHTML = text.html;
     panel.hidden = !!choice;
     document.body.append(panel);
 
